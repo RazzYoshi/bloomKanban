@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import Board from './components/Board';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    lanes: [{
+      id:0,
+      title: "ToDo",
+      issues:[
+        {id:"issue1", label:"Make React Components"},
+        {id:"issue2", label:"Add styling"}
+      ],
+      lane: 0
+    },
+    {
+      id:1,
+      title:"In Progress",
+      issues: [],
+      lane: 0
+    },
+    {
+      id:2,
+      title: "Review",
+      issues: [],
+      lane: 0
+    }
+  ]
+  }
+
+  render() {
+    /**
+   * [ {id:0, title:"", issues:[{issue}]}
+   * ]
+   */
+    const {lanes} = this.state;
+    return (
+     <Board lanes={lanes}/>
+    );
+  }
+  
 }
 
 export default App;
